@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 public class ServidorResources {
     @GetMapping
     public ResponseEntity<Servidor> findAll(){
-        Servidor u = new Servidor(1L,"ruan",1L, LocalDateTime.now());
+        Servidor u = new Servidor(1L,"ruan",1L,LocalDateTime.now());
         return ResponseEntity.ok().body(u);
     }
 }

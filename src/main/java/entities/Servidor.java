@@ -43,9 +43,9 @@ public class Servidor implements Serializable {
         return data_cadastro;
     }
 
-    //public Lotacao getLotacao() {
+    /*public Lotacao getLotacao() {
        // return lotacao;
-    //}
+    }*/
 
     public void setId(Long id) {
         this.id = id;
@@ -63,9 +63,9 @@ public class Servidor implements Serializable {
         this.data_cadastro = data_cadastro;
     }
 
-    //public void setLotacao(Lotacao lotacao) {
+    /*public void setLotacao(Lotacao lotacao) {
         //this.lotacao = lotacao;
-    //}
+    }*/
 
     @Override
     public boolean equals(Object o) {
