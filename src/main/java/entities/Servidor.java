@@ -11,17 +11,20 @@ public class Servidor implements Serializable {
     private String nome;
     private String matricula;
     private LocalDateTime data_cadastro;
-    private Lotacao lotacao;
+    //private Lotacao lotacao;
 
     public Servidor() {
     }
 
-    public Servidor(Long id, String nome, String matricula, LocalDateTime data_cadastro, Lotacao lotacao) {
+    public Servidor(Long id, String nome, String matricula, LocalDateTime data_cadastro /*,Lotacao lotacao*/) {
         this.id = id;
         this.nome = nome;
         this.matricula = matricula;
         this.data_cadastro = data_cadastro;
-        this.lotacao = lotacao;
+        //this.lotacao = lotacao;
+    }
+
+    public Servidor(Long i, String ruan, Long i1, LocalDateTime now) {
     }
 
     public Long getId() {
@@ -40,9 +43,9 @@ public class Servidor implements Serializable {
         return data_cadastro;
     }
 
-    public Lotacao getLotacao() {
-        return lotacao;
-    }
+    //public Lotacao getLotacao() {
+       // return lotacao;
+    //}
 
     public void setId(Long id) {
         this.id = id;
@@ -60,9 +63,9 @@ public class Servidor implements Serializable {
         this.data_cadastro = data_cadastro;
     }
 
-    public void setLotacao(Lotacao lotacao) {
-        this.lotacao = lotacao;
-    }
+    //public void setLotacao(Lotacao lotacao) {
+        //this.lotacao = lotacao;
+    //}
 
     @Override
     public boolean equals(Object o) {
