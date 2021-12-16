@@ -2,15 +2,15 @@ package br.com.ruan.javaspringideaexample.controller;
 
 import br.com.ruan.javaspringideaexample.entities.Lotacao;
 import br.com.ruan.javaspringideaexample.service.LotacaoService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/lotacao")
 public class LotacaoController{
 
-    @Autowired
+    final static String URI = "/lotacao";
+
     private final LotacaoService lotacaoService;
 
     public LotacaoController(LotacaoService lotacaoService) {
@@ -18,15 +18,16 @@ public class LotacaoController{
     }
 
 
-    @GetMapping
-    public ResponseEntity<Lotacao> cadastrarLotacao(@RequestBody Lotacao lotacao){
-        Lotacao lotacaoSalva = lotacaoService.salvar(lotacao);
-        return ResponseEntity.ok().body(lotacaoSalva);
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Lotacao cadastrarLotacao(@RequestBody Lotacao lotacao){
+        return lotacaoService.salvar(lotacao);
     }
+
     @GetMapping(value = "/{descricao}")
-    public ResponseEntity<Lotacao> buscarPorNome(@PathVariable String descricao){
-        Lotacao lotacaoBuscada = lotacaoService.buscaPorDescricao(descricao);
-        return ResponseEntity.ok(lotacaoBuscada);
+    @ResponseStatus(HttpStatus.OK)
+    public Lotacao buscarPorDescricao(@PathVariable String descricao){
+        return lotacaoService.buscaPorDescricao(descricao);
     }
 
 }
