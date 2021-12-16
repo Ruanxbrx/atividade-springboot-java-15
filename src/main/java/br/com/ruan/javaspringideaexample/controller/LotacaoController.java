@@ -4,14 +4,11 @@ import br.com.ruan.javaspringideaexample.entities.Lotacao;
 import br.com.ruan.javaspringideaexample.service.LotacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/lotacao")
-class LotacaoController {
+public class LotacaoController{
 
     @Autowired
     private final LotacaoService lotacaoService;
@@ -26,5 +23,11 @@ class LotacaoController {
         Lotacao lotacaoSalva = lotacaoService.salvar(lotacao);
         return ResponseEntity.ok().body(lotacaoSalva);
     }
+    @GetMapping(value = "/{descricao}")
+    public ResponseEntity<Lotacao> buscarPorNome(@PathVariable String descricao){
+        Lotacao lotacaoBuscada = lotacaoService.buscaPorDescricao(descricao);
+        return ResponseEntity.ok(lotacaoBuscada);
+    }
+
 }
 
