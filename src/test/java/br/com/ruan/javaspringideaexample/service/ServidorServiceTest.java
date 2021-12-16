@@ -19,6 +19,18 @@ public class ServidorServiceTest {
     private ServidorService servidorService;
 
     @Test
+    @DisplayName("deve salvar um novo Servidor")
+    void deveSalvarUmNovoServidor() {
+        //cenario
+        Servidor serv1 = new Servidor(null,"bbbb","ccc",LocalDateTime.now(),null);
+        //execucao
+        Servidor servidorSalva = servidorService.salvar(serv1);
+        //verificacao
+        Assertions.assertNotNull(servidorSalva.getId());
+
+    }
+
+    @Test
     @DisplayName("deve retonar um Servidor")
     void deveRetornarUmNovoServidor() {
         //cenario
