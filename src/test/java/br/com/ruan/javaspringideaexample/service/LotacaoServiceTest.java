@@ -36,10 +36,10 @@ public class LotacaoServiceTest {
         Lotacao lot1 = new Lotacao(null,"aaaa", LocalDateTime.now(), TipoLotacao.ADMINISTRATIVO );
         Lotacao lotacaoSalva = service.salvar(lot1);
         //execucao
-        Lotacao buscaLotacao = service.buscaPorID(lotacaoSalva.getId());
+
+        Lotacao buscaLotacao = service.buscaPorDescricao(lotacaoSalva.getDescricao());
         //verificacao
         Assertions.assertNotNull(buscaLotacao.getId());
-        buscaLotacao.getId();
 
     }
 
