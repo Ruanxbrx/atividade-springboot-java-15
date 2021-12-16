@@ -7,11 +7,13 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
 import java.time.LocalDateTime;
 
 @SpringBootTest
-class LotacaoServiceTest {
+public class LotacaoServiceTest {
 
     @Autowired
     private LotacaoService service;
@@ -25,6 +27,19 @@ class LotacaoServiceTest {
         Lotacao lotacaoSalva = service.salvar(lot1);
         //verificacao
         Assertions.assertNotNull(lotacaoSalva.getId());
+
+    }
+    @Test
+    @DisplayName("deve retonar uma lotacao")
+    void deveRetornarUmaNovaLotacao() {
+        //cenario
+        Lotacao lot1 = new Lotacao(null,"aaaa", LocalDateTime.now(), TipoLotacao.ADMINISTRATIVO );
+        Lotacao lotacaoSalva = service.salvar(lot1);
+        //execucao
+        Lotacao buscaLotacao = service.buscaPorID(lotacaoSalva.getId());
+        //verificacao
+        Assertions.assertNotNull(buscaLotacao.getId());
+        buscaLotacao.getId();
 
     }
 
