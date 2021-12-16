@@ -21,7 +21,7 @@ public class ServidorService {
         return servidorSalva;
     }
     public Servidor buscaPorMatricula(String matricula){
-        Optional<Servidor> servidorBuscada =repository.findByMatricula(matricula);
+        Optional<Servidor> servidorBuscada = repository.findByMatricula(matricula);
         return servidorBuscada.get();
     }
 

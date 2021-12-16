@@ -20,7 +20,7 @@ public class LotacaoServiceTest {
     @DisplayName("deve salvar uma nova lotacao")
     void deveSalvarUmaNovaLotacao() {
         //cenario
-        Lotacao lot1 = new Lotacao(null,"aaaa", LocalDateTime.now(), TipoLotacao.ADMINISTRATIVO );
+        Lotacao lot1 = new Lotacao(null,"aaaa", LocalDateTime.now(), TipoLotacao.ADMINISTRATIVO);
         //execucao
         Lotacao lotacaoSalva = service.salvar(lot1);
         //verificacao

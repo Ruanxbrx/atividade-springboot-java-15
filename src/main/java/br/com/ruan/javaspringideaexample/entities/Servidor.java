@@ -14,7 +14,7 @@ public class Servidor {
     private String matricula;
     private LocalDateTime dataCadastro;
     @ManyToMany
-    private Set<Lotacao> lotacao;
+    private Set<Lotacao> lotacoes;
 
     public Servidor() {
     }
@@ -24,7 +24,7 @@ public class Servidor {
         this.nome = nome;
         this.matricula = matricula;
         this.dataCadastro = data_cadastro;
-        this.lotacao = lotacao;
+        this.lotacoes = lotacao;
     }
 
 
@@ -45,8 +45,8 @@ public class Servidor {
         return dataCadastro;
     }
 
-    public Set<Lotacao> getLotacao() {
-        return lotacao;
+    public Set<Lotacao> getLotacoes() {
+        return lotacoes;
     }
 
     @Override
