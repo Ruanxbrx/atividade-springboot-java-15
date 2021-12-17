@@ -19,6 +19,12 @@ public class Lotacao {
     public Lotacao() {
     }
 
+    public Lotacao(String descricao, LocalDateTime dataLotacaoCadastro, TipoLotacao tipoLotacao) {
+        this.descricao = descricao;
+        this.dataLotacaoCadastro = dataLotacaoCadastro;
+        this.tipoLotacao = tipoLotacao;
+    }
+
     public Lotacao(Long id, String descricao, LocalDateTime dataLotacaoCadastro, TipoLotacao tipoLotacao) {
         this.id = id;
         this.descricao = descricao;
