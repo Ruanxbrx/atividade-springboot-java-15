@@ -10,8 +10,11 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping(value = "/lotacao")
 public class LotacaoController{
+
     final static String URI = "/lotacao";
+
     private final LotacaoService lotacaoService;
+
     public LotacaoController(LotacaoService lotacaoService) {
         this.lotacaoService = lotacaoService;
     }
