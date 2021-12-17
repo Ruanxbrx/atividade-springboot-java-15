@@ -27,9 +27,7 @@ public class ServidorService {
 
     @Transactional
     public Servidor salvar(ServidorCadastroDto servidorDto){
-
         Servidor servidor;
-
         if (servidorDto.getLotacoes() != null) {
             Set<Lotacao> lotacoes = new HashSet<>(lotacaoService.buscarPorTodosIds(servidorDto.getLotacoes()));
             servidor = new Servidor(servidorDto.getName(), LocalDateTime.now(), lotacoes);
@@ -41,6 +39,7 @@ public class ServidorService {
         servidor.setMatricula(PREFIXO_MATRICULA + servidor.getId());
         return repository.save(servidor);
     }
+
     public Servidor buscaPorMatricula(String matricula){
         Optional<Servidor> servidorBuscada = repository.findByMatricula(matricula);
         return servidorBuscada.get();

@@ -5,21 +5,16 @@ import br.com.ruan.javaspringideaexample.entities.Lotacao;
 import br.com.ruan.javaspringideaexample.service.LotacaoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
 
 @RestController
 @RequestMapping(value = "/lotacao")
 public class LotacaoController{
-
     final static String URI = "/lotacao";
-
     private final LotacaoService lotacaoService;
-
     public LotacaoController(LotacaoService lotacaoService) {
         this.lotacaoService = lotacaoService;
     }
-
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)

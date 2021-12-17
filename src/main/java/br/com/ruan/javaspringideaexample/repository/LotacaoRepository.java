@@ -9,8 +9,6 @@ import java.util.Optional;
 
 @Repository
 public interface LotacaoRepository extends JpaRepository<Lotacao,Long> {
-
     Optional<Lotacao> findByDescricao(String descricao);
-
     List<Lotacao> findAllById(Iterable<Long> longs);
 }

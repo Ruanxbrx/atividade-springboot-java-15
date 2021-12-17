@@ -25,12 +25,10 @@ public class LotacaoService {
         return repository.save(lotacao);
     }
     public Lotacao buscaPorDescricao(String descricao){
-        Optional<Lotacao> lotacaoBuscada =repository.findByDescricao(descricao);
+        Optional<Lotacao> lotacaoBuscada = repository.findByDescricao(descricao);
         return lotacaoBuscada.get();
     }
-
     public List<Lotacao> buscarPorTodosIds(List<Long> ids){
         return repository.findAllById(ids);
     }
-
 }
