@@ -1,9 +1,12 @@
 package br.com.ruan.javaspringideaexample.controller;
 
+import br.com.ruan.javaspringideaexample.controller.dto.ServidorCadastroDto;
 import br.com.ruan.javaspringideaexample.entities.Servidor;
 import br.com.ruan.javaspringideaexample.service.ServidorService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping(value = "/servidor")
@@ -19,8 +22,8 @@ public class ServidorController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Servidor cadastrarServidor(@RequestBody Servidor servidor){
-        return servidorService.salvar(servidor);
+    public Servidor cadastrarServidor(@RequestBody @Valid ServidorCadastroDto servidorDto){
+        return servidorService.salvar(servidorDto);
     }
 
     @GetMapping(value = "/{matricula}")
