@@ -19,15 +19,24 @@ public class Servidor {
     public Servidor() {
     }
 
-    public Servidor(Long id, String nome, String matricula, LocalDateTime data_cadastro, Set<Lotacao> lotacao) {
+    public Servidor(Long id, String nome, String matricula, LocalDateTime dataCadastro, Set<Lotacao> lotacoes) {
         this.id = id;
         this.nome = nome;
         this.matricula = matricula;
-        this.dataCadastro = data_cadastro;
-        this.lotacoes = lotacao;
+        this.dataCadastro = dataCadastro;
+        this.lotacoes = lotacoes;
     }
 
+    public Servidor(String nome, LocalDateTime dataCadastro, Set<Lotacao> lotacoes) {
+        this.nome = nome;
+        this.dataCadastro = dataCadastro;
+        this.lotacoes = lotacoes;
+    }
 
+    public Servidor(String nome, LocalDateTime dataCadastro) {
+        this.nome = nome;
+        this.dataCadastro = dataCadastro;
+    }
 
     public Long getId() {
         return id;
@@ -39,6 +48,10 @@ public class Servidor {
 
     public String getMatricula() {
         return matricula;
+    }
+
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
     }
 
     public LocalDateTime getData_cadastro() {
