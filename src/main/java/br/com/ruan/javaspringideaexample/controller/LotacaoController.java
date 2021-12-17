@@ -1,9 +1,12 @@
 package br.com.ruan.javaspringideaexample.controller;
 
+import br.com.ruan.javaspringideaexample.controller.dto.LotacaoDto;
 import br.com.ruan.javaspringideaexample.entities.Lotacao;
 import br.com.ruan.javaspringideaexample.service.LotacaoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping(value = "/lotacao")
@@ -20,8 +23,8 @@ public class LotacaoController{
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Lotacao cadastrarLotacao(@RequestBody Lotacao lotacao){
-        return lotacaoService.salvar(lotacao);
+    public Lotacao cadastrarLotacao(@RequestBody @Valid LotacaoDto lotacaoDto){
+        return lotacaoService.salvar(lotacaoDto);
     }
 
     @GetMapping(value = "/{descricao}")
