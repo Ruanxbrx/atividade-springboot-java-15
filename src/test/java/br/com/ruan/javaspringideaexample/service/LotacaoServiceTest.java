@@ -3,27 +3,41 @@ package br.com.ruan.javaspringideaexample.service;
 import br.com.ruan.javaspringideaexample.controller.dto.LotacaoDto;
 import br.com.ruan.javaspringideaexample.entities.Lotacao;
 import br.com.ruan.javaspringideaexample.entities.TipoLotacao;
-import org.junit.jupiter.api.Assertions;
+import br.com.ruan.javaspringideaexample.repository.LotacaoRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-@SpringBootTest
+import java.time.LocalDateTime;
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
+
+@ExtendWith(SpringExtension.class)
 public class LotacaoServiceTest {
 
-    @Autowired
+    @InjectMocks
     private LotacaoService service;
+
+    @Mock
+    private LotacaoRepository repository;
 
     @Test
     @DisplayName("deve salvar uma nova lotacao")
     void deveSalvarUmaNovaLotacao() {
         //cenario
         LotacaoDto dto = new LotacaoDto("Facem", TipoLotacao.ADMINISTRATIVO);
+        Lotacao lotacao = new Lotacao(1L, "Facem", LocalDateTime.now(), TipoLotacao.ADMINISTRATIVO);
+        when(repository.save(any())).thenReturn(lotacao);
         //execucao
         Lotacao lotacaoSalva = service.salvar(dto);
         //verificacao
-        Assertions.assertNotNull(lotacaoSalva.getId());
+        assertEquals(lotacaoSalva, lotacao);
     }
 
     @Test
@@ -31,10 +45,14 @@ public class LotacaoServiceTest {
     void deveRetornarUmaNovaLotacao() {
         //cenario
         LotacaoDto dto = new LotacaoDto("Facem", TipoLotacao.ADMINISTRATIVO);
+        Lotacao lotacao = new Lotacao(1L, "Facem", LocalDateTime.now(), TipoLotacao.ADMINISTRATIVO);
+        when(repository.save(any())).thenReturn(lotacao);
+        when(repository.findByDescricao("Facem")).thenReturn(Optional.of(lotacao));
         Lotacao lotacaoSalva = service.salvar(dto);
         //execucao
-        Lotacao buscaLotacao = service.buscaPorDescricao(lotacaoSalva.getDescricao());
+        Lotacao buscaLotacao = service.buscaPorDescricao("Facem");
         //verificacao
-        Assertions.assertNotNull(buscaLotacao.getId());
+        assertEquals(buscaLotacao, lotacao);
     }
+
 }
